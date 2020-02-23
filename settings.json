@@ -1,0 +1,6 @@
+{
+  "mongoConfig": {
+    "serverUrl": "mongodb://localhost/",
+    "database": "cs546-group6-recipebook"
+  }
+}
