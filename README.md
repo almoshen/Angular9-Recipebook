@@ -14,6 +14,9 @@ run from a terminal
 - `cd cs546-group6-recipebook`
 - `git checkout develop`
 - `git pull`
+- `git add <files>`
+- `git commit -m "your message"`
+- `git push --set-upstream origin develop`
 
 ## Development
 - If you want to run it locally, you should install MongoDB first then
