@@ -14,6 +14,9 @@ Develop is the default branch. Run from a terminal
 - `git clone https://github.com/MaurizioBella/cs546-group6-recipebook.git`
 - `cd cs546-group6-recipebook`
 - `git pull`
+
+Now you can start work locally. To push to Git run from terminal
+
 - `git add <files>`
 - `git commit -m "your message"`
 - `git push --set-upstream origin develop`
