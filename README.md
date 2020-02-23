@@ -12,7 +12,6 @@
 run from a terminal
 - `git clone https://github.com/MaurizioBella/cs546-group6-recipebook.git`
 - `cd cs546-group6-recipebook`
-- `git checkout develop`
 - `git pull`
 - `git add <files>`
 - `git commit -m "your message"`
