@@ -9,8 +9,9 @@
 - nodemon
 
 ## Development
-- You should have a local MongoDB 
-- To execute it `npm start` then navigate to [localhost](http://localhost:8080/)
+- If you want to run it locally, you should install MongoDB first then
+- `npm start` to run it
+- Navigate to [localhost](http://localhost:8080/)
 
 
 ## Deployment
