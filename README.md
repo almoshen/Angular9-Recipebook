@@ -25,6 +25,8 @@ Now you can start work locally. To push to Git run from terminal
 If you want to deploy a new version to production on Heroku, just create a pull request from develop to the production branch and merge it.
 Heroku will deploy the code automatically once you merged the code.
 
+Do not run multiple merge at the same time. The deployment process might take about 5 minutes. Take some coffee!
+
 
 ## Development
 - If you want to run it locally, you should install MongoDB first then
