@@ -21,7 +21,8 @@ Now you can start work locally. To push to Git run from terminal
 - `git commit -m "your message"`
 - `git push --set-upstream origin develop`
 
-you should create a pull request on master to deploy it to Heroku
+If you want to deploy a new version to production on Heroku, just create a pull request from develop to the production branch and merge it.
+Heroku will deploy the code automatically once you merged the code.
 
 
 ## Development
