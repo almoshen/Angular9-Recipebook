@@ -30,7 +30,7 @@ A platform for users to access recipes from a pool of recipes shared by users. F
 
 ## Group Members
 - Jianghao Li
-- [Maurizio Bella] (https://github.com/MaurizioBella/)
+- [Maurizio Bella](https://github.com/MaurizioBella/)
 - Shen Fan
 - Tejashree Prabhu
 
