@@ -1,6 +1,38 @@
 # Cs546Group6Recipebook
 
-.. write an overview ..
+A platform for users to access recipes from a pool of recipes shared by users. Following are the features :
+
+### Core features: 
+- Main page: The main page after will show the “hottest” recipes with most likes or the “Latest” recipes which show the trend of what’s on people’s minds these days.  Users can sort recipes based on newest ones, most popular ones or categories.
+- Sign in / Sign up page
+- Post recipe
+- Allow users to post a new recipe once signed in
+- Allow users to comment on recipes
+- Grocery List, adding the recipe ingredients to a grocery list.
+- Likes on recipe
+- Allow users to show their interest in recipes.
+- View recipe
+- Allow users to view details of recipes (like ingredients, photos, instructions and how long to be ready).
+- Search recipe
+- Allow users to search recipes (Like search bar on the Nav bar)
+- Edit recipe
+- Allow users to edit recipes after signing in.
+
+### Extra features:
+- Comments
+- Allow users to post comments on recipes.
+- Grocery list
+- Allow users to add ingredients of recipes to the grocery list.
+- Google maps: Add Google maps for users to find grocery stores nearby.
+- Media share
+- Responsive site
+
+
+## Group Members
+- Jianghao Li
+- [Maurizio Bella] (https://github.com/MaurizioBella/)
+- Shen Fan
+- Tejashree Prabhu
 
 ## Components
 - angular2 (This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3)
