@@ -29,10 +29,10 @@ A platform for users to access recipes from a pool of recipes shared by users. F
 
 
 ## Group Members
-- Jianghao Li
+- [Jianghao Li](https://github.com/travislee0711)
 - [Maurizio Bella](https://github.com/MaurizioBella/)
-- Shen Fan
-- Tejashree Prabhu
+- [Shen Fan](https://github.com/almoshen)
+- [Tejashree Prabhu](https://github.com/TP170996)
 
 ## Components
 - angular2 (This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3)
