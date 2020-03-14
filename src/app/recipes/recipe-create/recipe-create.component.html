@@ -1,0 +1,30 @@
+<div class="main-div">
+  <mat-card>
+    <div class="spinner-border text-danger" role="status" *ngIf="isLoading"></div>
+    <form [formGroup]="form" (submit)="onAddRecipe()" *ngIf="!isLoading">
+      <mat-form-field>
+        <input  matInput type="text"
+                formControlName="title"
+                placeholder="Recipe Title">
+        <mat-error *ngIf="form.get('title').invalid">Please enter the title</mat-error>
+      </mat-form-field>
+      <hr>
+      <mat-form-field>
+      <textarea  matInput rows="6"
+                 formControlName="instructions"
+                 placeholder="Instruction"></textarea>
+        <mat-error *ngIf="form.get('instructions').invalid">Please enter the instructions</mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-icon-button type="button" (click)="picker.click()">Pick Image</button>
+        <input type="file" #picker (change)="onPicked($event)">
+      </div>
+      <div class="image-preview" *ngIf="imagePreview !=='' && imagePreview">
+        <img [src]="imagePreview" [alt]="form.value.title">
+      </div>
+      <button mat-raised-button type="submit">Save Recipe</button>
+    </form>
+  </mat-card>
+</div>
+
+
