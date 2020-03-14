@@ -70,3 +70,4 @@ This application use Heroku on the following URL  [Heroku](https://cs546-group6-
 
 ## Other
 Use [MEditor](https://pandao.github.io/editor.md/en.html) to create a nice Readme
+
