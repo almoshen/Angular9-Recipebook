@@ -31,14 +31,14 @@ router.post("/signup", (req, res) => {
 
 router.post("/login", (req, res) => {
   let fetchedUser;
-  User.findOne({ email: req.body.email}).then(
+  User.findOne({ email: req.body.email }).then(
     user => {
       if(!user) {
         return res.status(401).json({
           message: "No user with the email"
         })
       }
-      fetchedUser = user
+      fetchedUser = user;
       return bcrypt.compare(req.body.password, user.password);
     }).then(
     result => {
@@ -50,7 +50,7 @@ router.post("/login", (req, res) => {
       const token = jwt.sign({email: fetchedUser.email,
           userId: fetchedUser._id, username: fetchedUser.username, firstname: fetchedUser.firstname,
           lastname: fetchedUser.lastname},
-        'this is used as password for hashes', {expiresIn: 1800});
+        'this_is_used_as_password_for_hashes', {expiresIn: 1800});
       res.status(200).json({
         token: token,
         expiresIn: 1800

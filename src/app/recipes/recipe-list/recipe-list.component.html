@@ -10,8 +10,10 @@
       <div class="card-body">
         <a [routerLink]="['/recipe', recipe.id]"><h4 class="card-title">{{recipe.title}}</h4></a>
         <p class="card-text">{{recipe.instructions}}</p>
-        <a class="btn btn-primary" [routerLink]="['/edit', recipe.id]">edit</a>
-        <a class="btn btn-primary" (click)="onDelete(recipe.id)">delete</a>
+        <div *ngIf="isAuthenticated">
+          <a class="btn btn-primary" [routerLink]="['/edit', recipe.id]">edit</a>
+          <a class="btn btn-primary" (click)="onDelete(recipe.id)">delete</a>
+        </div>
       </div>
     </div>
   </div>
@@ -19,4 +21,4 @@
 </div>
 <mat-paginator [length]="totalRecipes" [pageSize]="recipesPerPage"
                [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)" *ngIf="recipes.length > 0"></mat-paginator>
-<p *ngIf="recipes.length<=0">No Recipe</p>
+<p *ngIf="recipes.length<=0">No Recipe or Loading....</p>
