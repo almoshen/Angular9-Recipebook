@@ -7,17 +7,24 @@ const configRoutes = require("./routes");
 const app = express();
 
 
-
-mongoose
-  .connect(
-    "mongodb+srv://Shen:Z3eA7LwikAhzLbBR@cs546project-pasfy.mongodb.net/node-angular?retryWrites=true&w=majority"
-  )
-  .then(() => {
+//this is for heroku
+let mongo_uri = process.env.MONGODB_URI;
+if (mongo_uri == null || mongo_uri == "") {
+    mongo_uri = 'mongodb://localhost/cs546group6recipebook';
+}
+//Mongoose connection
+mongoose.connect(mongo_uri,
+{
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true
+}).then(() => {
     console.log("Connected to database!");
   })
   .catch(() => {
     console.log("Connection failed!");
   });
+
 app.use(bodyParser.json());
 app.use("/images", express.static(path.join('backend/images')));
 
