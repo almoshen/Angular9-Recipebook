@@ -4,6 +4,10 @@
   "description": "CS-546 Group 6 Recipe Book project",
   "author": "Group 6",
   "license": "ISC",
+  "engines": {
+    "node": "12.16.x",
+    "npm": "6.x"
+  },
   "scripts": {
     "ng": "ng",
     "start": "nodemon server.js",
