@@ -15,8 +15,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --output-path dist",
-    "heroku-postbuild": "ng build --output-path dist"
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +23,8 @@
     "@angular/cdk": "9.2.0",
     "@angular/common": "~9.0.2",
     "@angular/compiler": "~9.0.2",
+    "@angular/cli": "~9.0.3",
+    "@angular/compiler-cli": "~9.0.2",
     "@angular/core": "~9.0.2",
     "@angular/forms": "~9.0.2",
     "@angular/material": "9.2.0",
@@ -46,8 +47,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.3",
-    "@angular/cli": "~9.0.3",
-    "@angular/compiler-cli": "~9.0.2",
     "@angular/language-service": "~9.0.2",
     "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
