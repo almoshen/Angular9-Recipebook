@@ -50,7 +50,7 @@ router.post("/login", (req, res) => {
       const token = jwt.sign({email: fetchedUser.email,
           userId: fetchedUser._id, username: fetchedUser.username, firstname: fetchedUser.firstname,
           lastname: fetchedUser.lastname},
-        'this_is_used_as_password_for_hashes', {expiresIn: 1800});
+        process.env.JWT_KEY, {expiresIn: 1800});
       res.status(200).json({
         token: token,
         expiresIn: 1800
