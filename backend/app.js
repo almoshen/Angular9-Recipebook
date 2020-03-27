@@ -48,7 +48,7 @@ app.use(bodyParser.urlencoded({
 
 // app.use(express.static(__dirname + '/dist/cs546-group6-recipebook'));
 
-app.use("/images", express.static(path.join('images')));
+app.use("/images", express.static(path.join('backend/images')));
 
 app.use((req,res,next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
