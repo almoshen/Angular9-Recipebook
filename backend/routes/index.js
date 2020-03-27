@@ -9,8 +9,8 @@ const constructorMethod = (app) => {
 
   app.use('/recipes', recipeRoutes);
   app.use('/users', userRoutes);
-  app.use((req, res) => {
-  res.sendFile(path.join(__dirname + '/dist/cs546-group6-recipebook/index.html'));
+  app.get('*', (req, res) => {
+    res.sendStatus(404);
 });
 };
 module.exports = constructorMethod;
