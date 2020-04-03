@@ -10,10 +10,10 @@
       <div class="card-body">
         <a [routerLink]="['/recipe', recipe.id]"><h4 class="card-title">{{recipe.title}}</h4></a>
         <p class="card-text">{{recipe.instructions}}</p>
-        <div *ngIf="isAuthenticated">
-          <a class="btn btn-primary" [routerLink]="['/edit', recipe.id]">edit</a>
-          <a class="btn btn-primary" (click)="onDelete(recipe.id)">delete</a>
-        </div>
+<!--        <div *ngIf="isAuthenticated && userId === recipe.user">-->
+<!--          <a class="btn btn-primary" [routerLink]="['/edit', recipe.id]">edit</a>-->
+<!--          <a class="btn btn-primary" (click)="onDelete(recipe.id)">delete</a>-->
+<!--        </div>-->
       </div>
     </div>
   </div>

@@ -1,3 +1,11 @@
-<img [src]="recipe.imagePath" alt="">
-<h2>{{ recipe.title }}</h2>
-<p>{{recipe.instructions}}</p>
+<div class="container">
+  <div class="row" *ngIf="recipe">
+    <img [src]="recipe.imagePath" [alt]="recipe.title">
+    <h2>{{ recipe.title }}</h2>
+    <p>{{recipe.instructions}}</p>
+    <div *ngIf="isAuthenticated && userId === recipe.user">
+      <a class="btn btn-primary" [routerLink]="['/edit', recipe.id]">edit</a>
+      <a class="btn btn-primary" (click)="onDelete(recipe.id)">delete</a>
+    </div>
+  </div>
+</div>

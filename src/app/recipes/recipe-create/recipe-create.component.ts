@@ -34,7 +34,10 @@ export class RecipeCreateComponent implements OnInit {
         this.recipeService.getRecipe(this.recipeId).subscribe(recipeData => {
           this.isLoading = false;
           this.recipe = {id: recipeData._id, title: recipeData.title,
-            instructions: recipeData.instructions, imagePath: recipeData.imagePath};
+            instructions: recipeData.instructions,
+            imagePath: recipeData.imagePath,
+            user: recipeData.user
+          };
           this.form.setValue(
             {title: this.recipe.title, instructions: this.recipe.instructions, image: this.recipe.imagePath});
         });
@@ -43,6 +46,17 @@ export class RecipeCreateComponent implements OnInit {
         this.recipeId = null;
       }
     });
+  }
+
+  onPicked(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({image: file});
+    this.form.get('image').updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
   }
 
   onAddRecipe() {
@@ -57,17 +71,6 @@ export class RecipeCreateComponent implements OnInit {
         this.form.value.instructions, this.form.value.image);
     }
     this.form.reset();
-  }
-
-  onPicked(event: Event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({image: file});
-    this.form.get('image').updateValueAndValidity();
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imagePreview = reader.result as string;
-    };
-    reader.readAsDataURL(file);
   }
 
 }

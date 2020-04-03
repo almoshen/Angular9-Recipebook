@@ -53,7 +53,8 @@ router.post("/login", (req, res) => {
         process.env.JWT_KEY, {expiresIn: 1800});
       res.status(200).json({
         token: token,
-        expiresIn: 1800
+        expiresIn: 1800,
+        userId: fetchedUser._id
       });
     }).catch(
     e => {

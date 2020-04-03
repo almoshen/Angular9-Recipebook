@@ -3,4 +3,5 @@ export interface Recipe {
   title: string;
   instructions: string;
   imagePath: string;
+  user: string;
 }

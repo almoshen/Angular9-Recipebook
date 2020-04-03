@@ -27,7 +27,8 @@ export class RecipeService {
             id: recipe._id,
             title: recipe.title,
             instructions: recipe.instructions,
-            imagePath: recipe.imagePath
+            imagePath: recipe.imagePath,
+            user: recipe.user
           };
         }),
         maxRecipes: recipeData.maxRecipes
@@ -47,7 +48,7 @@ export class RecipeService {
   }
 
   getRecipe(id: string) {
-    return this.http.get<{_id: string; title: string, instructions: string, imagePath: string}>(BACKEND_URL + id);
+    return this.http.get<{_id: string; title: string, instructions: string, imagePath: string, user: string}>(BACKEND_URL + id);
   }
 
   addRecipe(title: string, instructions: string, image: File | string) {
@@ -75,7 +76,8 @@ export class RecipeService {
         id,
         title,
         instructions,
-        imagePath: image
+        imagePath: image,
+        user: null
       };
     }
     this.http.put(BACKEND_URL + id, recipeData)
