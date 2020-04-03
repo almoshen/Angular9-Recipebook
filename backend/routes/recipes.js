@@ -9,7 +9,7 @@ const MIME_TYPE_MAP = {
   'image/png': 'png',
   'image/jpeg': 'jpg',
   'image/jpg': 'jpg'
-}
+};
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -21,8 +21,11 @@ const storage = multer.diskStorage({
     cb(error, "backend/images");
   },
   filename: (req, file, cb) => {
-    const name = file.originalname.toLowerCase().split(' ').join('-');
-    const ext = MIME_TYPE_MAP[file.mimeType];
+    const name = file.originalname
+      .toLowerCase()
+      .split(' ')
+      .join('-');
+    const ext = MIME_TYPE_MAP[file.mimetype];
     cb(null, name + '-' + Date.now() + '.' + ext);
   }
 });
@@ -33,7 +36,8 @@ router.post('', checkAuth,
   const recipe = new Recipe({
     title: req.body.title,
     instructions: req.body.instructions,
-    imagePath: url + "/images/" + req.file.filename
+    imagePath: url + "/images/" + req.file.filename,
+    user: req.userData.userId
   });
   recipe.save().then(createdRecipe => {
     res.status(201).json({
@@ -59,7 +63,10 @@ router.put('/:id', checkAuth, multer({ storage: storage }).single("image"), (req
     instructions: req.body.instructions,
     imagePath: imagePath
   });
-  Recipe.updateOne({_id: req.params.id}, recipe).then(result => {
+  Recipe.updateOne({_id: req.params.id, user: req.userData.userId}, recipe).then(result => {
+    if( result.nModified <= 0) {
+      res.status(401).json({ message: "User not authorized" });
+    }
     res.status(200).json({message: 'Update successful'})
   })
 });
@@ -94,9 +101,12 @@ router.get('/:id', (req, res) => {
 });
 
 router.delete('/:id', checkAuth, (req, res) => {
-  Recipe.deleteOne({_id: req.params.id}).then(
+  Recipe.deleteOne({_id: req.params.id, user: req.userData.userId}).then(
     result => {
-      res.status(200).json({ message: "Deleted"});
+      if(result.n <= 0) {
+        res.status(401).json({ message: "User not authorized" });
+      }
+      res.status(200).json({ message: "Deleted" });
     }
   );
 });
