@@ -2,10 +2,56 @@
   <div class="row" *ngIf="recipe">
     <img [src]="recipe.imagePath" [alt]="recipe.title">
     <h2>{{ recipe.title }}</h2>
+    <h3>Instructions:</h3>
     <p>{{recipe.instructions}}</p>
+    <h3>Ingredients:</h3>
+    <div *ngIf="isAuthenticated; else elseBlock">
+      <button (click)="onAddToGroceryList()" routerLink="/groceryList">Add to grocery List</button>
+      <button *ngIf="liked">Liked</button>
+      <button *ngIf="!liked" (click)="onLike()">Like!</button>
+    </div>
+    <ng-template #elseBlock>
+      <div>
+        <button routerLink="/login">Add to grocery List</button>
+      </div>
+    </ng-template>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let ingredient of recipe.ingredients">
+        {{ ingredient.name }} - {{ ingredient.amount }}
+      </li>
+    </ul>
     <div *ngIf="isAuthenticated && userId === recipe.user">
       <a class="btn btn-primary" [routerLink]="['/edit', recipe.id]">edit</a>
       <a class="btn btn-primary" (click)="onDelete(recipe.id)">delete</a>
     </div>
+    <div>
+      <h3>Comments:</h3>
+      <div class="form-group" *ngFor="let comment of recipe.comments">
+        <h5>Username: {{ comment.username }}</h5>
+        <p>{{ comment.comment }}</p>
+      </div>
+    </div>
   </div>
+  <hr>
+  <form [formGroup]="commentForm" (submit)="onAddComment()">
+    <div>
+      <div class="form-group">
+        <label for="comment">Add Comment</label>
+        <textarea
+          name="comment"
+          id="comment"
+          cols="20"
+          rows="10"
+          formControlName="comment"
+          required
+        ></textarea>
+      </div>
+      <button *ngIf="isAuthenticated" mat-raised-button type="submit">Submit Comment</button>
+      <p *ngIf="!isAuthenticated"> Please Login or SignUp to add comment</p>
+      <a *ngIf="!isAuthenticated" mat-raised-button routerLink="/login">Login</a>
+      <a *ngIf="!isAuthenticated" mat-raised-button routerLink="/signup">SignUp</a>
+    </div>
+  </form>
 </div>

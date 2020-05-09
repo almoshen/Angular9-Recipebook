@@ -6,12 +6,15 @@ import { GroceryListComponent } from './grocery-list/grocery-list.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import {AuthGuard} from './auth/auth.guard';
+import { AuthGuard } from './auth/auth.guard';
 
 
 const routes: Routes = [
-  { path: '', component: RecipeListComponent },
-  { path: 'recipes', component: RecipeListComponent },
+  { path: '', redirectTo: '/recipes', pathMatch: 'full' },
+  { path: 'recipes', component: RecipeListComponent, children: [
+      { path: ':id', component: RecipeDetailComponent}
+    ] },
+  { path: 'manage', component: RecipeListComponent },
   { path: 'recipe/:id', component: RecipeDetailComponent},
   { path: 'create', component: RecipeCreateComponent, canActivate: [AuthGuard]},
   { path: 'groceryList', component: GroceryListComponent},

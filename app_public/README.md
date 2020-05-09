@@ -1,27 +1,73 @@
-# RecipePublic
+# Cs546Group6Recipebook
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
+A platform for users to access recipes from a pool of recipes shared by users. Following are the features :
 
-## Development server
+### Core features: 
+- Main page: The main page after will show the “hottest” recipes with most likes or the “Latest” recipes which show the trend of what’s on people’s minds these days.  Users can sort recipes based on newest ones, most popular ones or categories.
+- Sign in / Sign up page
+- Post recipe
+- Allow users to post a new recipe once signed in
+- Allow users to comment on recipes
+- Grocery List, adding the recipe ingredients to a grocery list.
+- Likes on recipe
+- Allow users to show their interest in recipes.
+- View recipe
+- Allow users to view details of recipes (like ingredients, photos, instructions and how long to be ready).
+- Search recipe
+- Allow users to search recipes (Like search bar on the Nav bar)
+- Edit recipe
+- Allow users to edit recipes after signing in.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Extra features:
+- Comments
+- Allow users to post comments on recipes.
+- Grocery list
+- Allow users to add ingredients of recipes to the grocery list.
+- Google maps: Add Google maps for users to find grocery stores nearby.
+- Media share
+- Responsive site
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Group Members
+- [Jianghao Li](https://github.com/travislee0711)
+- [Maurizio Bella](https://github.com/MaurizioBella/)
+- [Shen Fan](https://github.com/almoshen)
+- [Tejashree Prabhu](https://github.com/TP170996)
 
-## Build
+## Components
+- angular2 (This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3)
+- express
+- mongoose
+- nodemon
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Where to start to change something
+Develop is the default branch. Run from a terminal
 
-## Running unit tests
+- `git clone https://github.com/MaurizioBella/cs546-group6-recipebook.git`
+- `cd cs546-group6-recipebook`
+- `git checkout develop`
+- `git pull`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Now you can start work locally. To push to Git run from terminal
 
-## Running end-to-end tests
+- `git add <files>`
+- `git commit -m "your message"`
+- `git push --set-upstream origin develop`
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+If you want to deploy a new version to production on Heroku, just create a pull request from develop to the production branch and merge it.
+Heroku will deploy the code automatically once you merged the code.
 
-## Further help
+Do not run multiple merge at the same time. The deployment process might take about 5 minutes. Take some coffee!
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Development
+- If you want to run it locally, you should install MongoDB first then
+- `npm start` to run it within the directory cs546-group6-recipebook
+- Navigate to [localhost](http://localhost:8080/) port 8080
+
+## Deployment
+This application use Heroku on the following URL  [Heroku](https://cs546-group6-recipebook.herokuapp.com/) 
+
+## Other
+Use [MEditor](https://pandao.github.io/editor.md/en.html) to create a nice Readme
+

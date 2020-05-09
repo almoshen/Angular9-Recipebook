@@ -1,24 +1,47 @@
 <div class="container">
+  <form class="form-inline md-form form-sm active-cyan-2">
+    <input
+      [(ngModel)]="searchValue"
+      name="search"
+      class="form-control form-control-sm mr-3 w-75"
+      type="text" placeholder="Search" aria-label="Search">
+    <span class="glyphicon glyphicon-search"></span>
+  </form>
   <div class="row" *ngIf="recipes.length > 0 && recipes">
-    <!--<app-recipe-item
-      *ngFor="let recipe of recipes"
-      [recipe]="recipe"
-    ></app-recipe-item>-->
-  <div class="col-sm-3" *ngFor="let recipe of recipes">
-    <div class="card" >
-      <a [routerLink]="['/recipe', recipe.id]"><img class="card-img-top" [src]="recipe.imagePath" [alt]="recipe.title"></a>
-      <div class="card-body">
-        <a [routerLink]="['/recipe', recipe.id]"><h4 class="card-title">{{recipe.title}}</h4></a>
-        <p class="card-text">{{recipe.instructions}}</p>
-<!--        <div *ngIf="isAuthenticated && userId === recipe.user">-->
-<!--          <a class="btn btn-primary" [routerLink]="['/edit', recipe.id]">edit</a>-->
-<!--          <a class="btn btn-primary" (click)="onDelete(recipe.id)">delete</a>-->
-<!--        </div>-->
+<!--    <input type="text" (keyup)="search($event.target.value)">-->
+    <div *ngIf="!visible; else elseBlock">
+      <div class="col-sm-3" *ngFor="let recipe of recipes | recipeFilter: 'title,ingredients,instructions,username' : searchValue">
+        <div class="card" >
+          <a [routerLink]="['/recipe', recipe.id]"><img class="card-img-top" [src]="recipe.imagePath" [alt]="recipe.title"></a>
+          <div class="card-body">
+            <a [routerLink]="['/recipe', recipe.id]"><h4 class="card-title">{{recipe.title}}</h4></a>
+            <h5 class="card-subtitle">By: {{recipe.username}}  <br>Likes: {{recipe.likes}}</h5>
+            <p class="card-text">{{recipe.instructions}}</p>
+            <!--        <div *ngIf="isAuthenticated && userId === recipe.user">-->
+            <!--          <a class="btn btn-primary" [routerLink]="['/edit', recipe.id]">edit</a>-->
+            <!--          <a class="btn btn-primary" (click)="onDelete(recipe.id)">delete</a>-->
+            <!--        </div>-->
+          </div>
+        </div>
       </div>
     </div>
+    <ng-template #elseBlock>
+      <div class="col-sm-3" *ngFor="let recipe of filter()">
+        <div class="card" >
+          <a [routerLink]="['/recipe', recipe.id]"><img class="card-img-top" [src]="recipe.imagePath" [alt]="recipe.title"></a>
+          <div class="card-body">
+            <a [routerLink]="['/recipe', recipe.id]"><h4 class="card-title">{{recipe.title}}</h4></a>
+            <p class="card-text">{{recipe.instructions}}</p>
+            <div *ngIf="isAuthenticated && userId === recipe.user">
+              <a class="btn btn-primary" [routerLink]="['/edit', recipe.id]">edit</a>
+              <a class="btn btn-primary" (click)="onDelete(recipe.id)">delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </div>
-</div>
 <mat-paginator [length]="totalRecipes" [pageSize]="recipesPerPage"
-               [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)" *ngIf="recipes.length > 0"></mat-paginator>
+               [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)" *ngIf="recipes.length > 0 && !visible"></mat-paginator>
 <p *ngIf="recipes.length<=0">No Recipe or Loading....</p>
