@@ -1,0 +1,79 @@
+        <!-- Masthead-->
+        <header class="p-3 mb-2 bg-primary">
+
+        </header>
+        <!-- Login section -->
+    <!-- Portfolio Section-->
+    <section class="page-section portfolio" id="recipedetail">
+      <div class="container content">
+         <div class="row banner">
+            <div class="col-12">
+               <h1>{{recipes.title}}</h1>
+            </div>
+         </div>
+         
+         <div class="row">
+            <div class="col-12 col-lg-12">
+               <div class="row">
+                  <div class="col-12 col-md-6">
+                     <p class="rating"><small>&nbsp;<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></small></p>
+                     <p>{{recipes.author}}</p>
+                     <p>{{recipes.createdOn}}</p>
+                     <div class="card card-primary">
+                        <p class="lead">{{recipes.instructions}}</p>
+                     </div>
+                     <div class="card card-primary">
+                        <div class="card-block">
+                           <h3 class="card-title">Ingredients</h3>
+                           {{#each recipes.ingredients}}
+                              <span class="badge badge-warning"><i class="fa fa-check"></i>&nbsp;{{item}}</span>&nbsp;
+                           {{/each}}
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-12 col-md-6 location-map text-center">
+                     <!-- <div class="card card-primary">
+                        <div class="card-block"> -->
+                           <h3 class="card-title">Picture</h3>
+                           <img class="img-fluid rounded" src="/assets/img/portfolio/494519.jpg">
+                        <!-- </div>
+                     </div> -->
+                  </div>
+               </div>
+            </div>
+            <div class="col-12 col-lg-12">
+               <div class="col-12 col-md-6">
+                  <div class="card card-primary review-card">
+                     <div class="card-block">
+                        {{#if username}}
+                        <a class="btn btn-primary float-right" href="/">Add review</a>
+                        {{/if}}
+                        <h3 class="card-title">Customer reviews</h3>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+      </div>
+      <section class="page-section action" id="recipeaction">
+         <div class="col-12 col-lg-12">
+            <div class="col-12 col-md-6">
+               {{!-- <div class="card card-primary review-card">
+                  <div class="card-block"> --}}
+                     {{!-- {{#if (eq firstname recipes.author)}} --}}
+                     {{!-- {{#if (compare firstname '===' recipes.author)}} --}}
+                     {{#ifCond username recipes.author}}
+                        <div class="col text-center">
+                           <a class="btn btn-primary" href="/recipe/detail/{{recipes.key}}/edit">Edit</a>
+                           <a class="btn btn-primary" href="/">Delete</a>
+                        </div>
+                     {{/ifCond}}
+                  {{!-- </div>
+               </div> --}}
+            </div>
+         </div>
+      </section>
+      
+      <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script><script src="/javascripts/bootstrap.min.js"></script><script src="/javascripts/validation.js"></script> -->
+</section>

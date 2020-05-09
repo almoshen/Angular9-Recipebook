@@ -1,0 +1,108 @@
+<!-- Masthead-->
+        <header class="p-3 mb-2 bg-primary">
+
+        </header>
+        <!-- Login section -->
+
+        <section class="page-section" id="login">
+            <div class="container">
+                <!-- Login Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{recipes.title}}</h2>
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+
+
+                <!-- Login Section Form-->
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <form id="recipeForm" name="sentMessage" novalidate="novalidate" class="needs-validation">
+
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label for="title">Title</label>
+                                    <input class="form-control" id="title" type="text" value="{{recipes.title}}" placeholder="Carbonara" required="required" data-validation-required-message="Please enter a title." />
+                                    <p class="help-block text-danger"></p>
+                                    <div class="invalid-feedback">
+                                      Please provide a valid title.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                  <label for="instructions">Instructions</label>
+                                  <textarea class="form-control" id="instructions" rows="3" placeholder="Boil the water for 10 minutes" required>{{recipes.instructions}}</textarea>
+                                    <div class="invalid-feedback">
+                                      Please provide the instructions on how to make this recipe.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label for="calories">Calories</label>
+                                    <input class="form-control" id="calories" value="{{recipes.calories}}" type="number" placeholder="100" required="required" data-validation-required-message="Please enter the calories." />
+                                    <p class="help-block text-danger"></p>
+                                    <div class="invalid-feedback">
+                                      Please provide a valid number of calories.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                  <label for="ingredients">Ingredients</label>
+                                  <select multiple class="form-control" id="ingredients" required>
+                                    <option>Select one or more ingredient</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                  </select>
+                                    <p class="help-block text-danger"></p>
+                                    <div class="invalid-feedback">
+                                      Please select at least one recipe.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="recipephoto">Recipe photo</label>
+                              <input type="file" class="form-control-file" id="recipephoto" required>
+                              <p class="help-block text-danger"></p>
+                              <div class="invalid-feedback">
+                                Please upload a photo.
+                              </div>
+                            </div>
+
+                            <br />
+                            <div id="success"></div>
+                            <div class="form-group">
+                              <button class="btn btn-primary btn-lg btn-block" id="sendRecipeButton" type="submit" data-toggle="modal" data-target="#demomodal">Update</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- show modal -->
+            <div class="modal fade" id="demomodal">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h2 class="modal-title">Please confirm</h2>
+                          <button type="button" name="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body" id="modal-body">
+                          
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" name="button" class="btn btn-secondary" data-dismiss="modal" id="buttonModalDismiss" >Confirm</button>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </section>
+        <script src="/js/recipesEdit.js"></script>

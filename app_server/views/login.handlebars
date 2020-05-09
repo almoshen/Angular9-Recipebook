@@ -1,0 +1,79 @@
+<!-- Masthead-->
+        <header class="p-3 mb-2 bg-primary">
+
+        </header>
+        <!-- Login section -->
+
+        <section class="page-section" id="login">
+            <div class="container">
+                <!-- Login Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Login Form</h2>
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+
+
+                <!-- Login Section Form-->
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <form id="loginForm" name="sentMessage" novalidate="novalidate" class="needs-validation">
+
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>Username</label><input class="form-control" id="username" type="text" placeholder="Username" required="required" data-validation-required-message="Please enter your username." />
+                                    <p class="help-block text-danger"></p>
+                                    <div class="invalid-feedback">
+                                      Please provide a valid username.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>Password</label>
+                                    <input class="form-control" id="password" type="password" placeholder="Password" data-validation-required-message="Please enter your password." required/>
+                                    <div class="invalid-feedback">
+                                      Please provide a valid username.
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div id="success"></div>
+                            <div class="form-group">
+                              <button class="btn btn-primary btn-lg btn-block" id="sendMessageButton" type="submit" data-toggle="modal" data-target="#demomodal">Login</button>
+                            </div>
+                        </form>
+                        <hr class="my-4">
+                        <div class="d-flex justify-content-center links">
+                          Don't have an account? <a href="/auth/register">Sign Up</a>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                          <a href="/auth/register">Forgot your password?</a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- show modal -->
+            <div class="modal fade" id="demomodal">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h2 class="modal-title">Please confirm</h2>
+                          <button type="button" name="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body" id="modal-body">
+                          
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" name="button" class="btn btn-secondary" data-dismiss="modal" id="buttonModalDismiss" >Confirm</button>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </section>
+        <script src="/js/login.js"></script>
+        

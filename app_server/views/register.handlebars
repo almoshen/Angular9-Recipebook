@@ -1,0 +1,111 @@
+<!-- Masthead-->
+        <header class="p-3 mb-2 bg-primary">
+
+        </header>
+        <!-- Login section -->
+
+        <section class="page-section" id="register">
+            <div class="container">
+                <!-- Register Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Register Form</h2>
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+
+
+                <!-- Login Section Form-->
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <form id="registerForm" name="sentMessage" novalidate="novalidate" class="register-needs-validation">
+
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>First Name</label><input class="form-control" id="firstname" type="text" placeholder="First Name" required />
+                                    <p class="help-block text-danger"></p>
+                                    <div class="invalid-feedback">
+                                      Please provide a valid First Name.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>Last Name</label><input class="form-control" id="lastname" type="text" placeholder="Last Name" />
+                                    <p class="help-block text-danger"></p>
+                                    <div class="invalid-feedback">
+                                      Please provide a valid Last Name.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>Email</label><input class="form-control" id="email" type="email" placeholder="Email" required />
+                                    <p class="help-block text-danger"></p>
+                                    <div class="invalid-feedback">
+                                      Please provide a valid email.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>Username</label><input class="form-control" id="username" type="text" placeholder="Username" required />
+                                    <p class="help-block text-danger"></p>
+                                    <div class="invalid-feedback">
+                                      Please provide a valid username.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                    <label>Password</label>
+                                    <input class="form-control" id="password" type="password" placeholder="Password" required/>
+                                    <div class="invalid-feedback">
+                                      Please provide a valid password.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                              <div class="form-check">
+                                  <input class="form-check-input" id="accept-terms" type="checkbox" required="required" />
+                                  <label for="accept-terms">Accept Terms &amp; Conditions</label>
+                                  <p class="help-block text-danger"></p>
+                                  <div class="invalid-feedback">
+                                    Please accept the Terms &amp; Conditions
+                                  </div>
+                              </div>
+                            <br />
+                            <div id="success"></div>
+                            <div class="form-group">
+                              <button class="btn btn-primary btn-lg btn-block" id="registerButton" type="submit" data-toggle="modal" data-target="#demomodal">Login</button>
+                            </div>
+                        </form>
+                        <hr class="my-4">
+                        <div class="d-flex justify-content-center links">
+                          Do you already have an account? <a href="/auth/login">Login here</a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- show modal -->
+            <div class="modal fade" id="demomodal">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h2 class="modal-title">Please confirm</h2>
+                          <button type="button" name="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body" id="modal-body">
+                          
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" name="button" class="btn btn-secondary" data-dismiss="modal" id="buttonModalDismiss" >Confirm</button>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </section>
+        <script src="/js/register.js"></script>

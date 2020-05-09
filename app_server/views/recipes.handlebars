@@ -1,0 +1,36 @@
+<!-- Masthead-->
+        <header class="p-3 mb-2 bg-primary">
+
+        </header>
+        <!-- Login section -->
+
+        <!-- Portfolio Section-->
+        <section class="page-section portfolio" id="portfolio">
+            <div class="container">
+                <!-- Portfolio Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">List Recipes</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+        
+                <div class="row">
+                  {{#each recipes}}
+                    <div class="col-md-6 col-lg-3 mb-3">
+                    <div class="card" style="width: 18rem;">
+                      <img class="card-img-top" src="/assets/img/portfolio/494556.jpg" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">{{title}}</h5>
+                        <p class="card-text">{{instructions}}</p>
+                        <a href="/recipe/detail/{{_id}}/list" class="btn btn-primary">More details</a>
+                      </div>
+                    </div>
+                  </div>
+                  {{/each}}
+                </div>
+                
+            </div>
+        </section>
+        
