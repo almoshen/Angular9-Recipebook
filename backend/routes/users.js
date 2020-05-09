@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
@@ -54,7 +54,8 @@ router.post("/login", (req, res) => {
       res.status(200).json({
         token: token,
         expiresIn: 1800,
-        userId: fetchedUser._id
+        userId: fetchedUser._id,
+        userName: fetchedUser.userName
       });
     }).catch(
     e => {

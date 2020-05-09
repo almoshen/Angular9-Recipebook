@@ -7,41 +7,37 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" routerLink="">
+      <a class="navbar-brand" routerLink="" (click)="reset()">
         Recipe
       </a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li>
-          <a routerLink="">Home</a>
+        <li routerLinkActive="active">
+          <a routerLink="recipes" (click)="reset()">Home</a>
         </li>
-        <li>
-          <a routerLink="/groceryList">Grocery List</a>
+        <li routerLinkActive="active">
+          <a routerLink="/groceryList" (click)="reset()">Grocery List</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown" *ngIf="isAuthenticated" appDropdown>
-          <a class="dropdown-toggle" role="button">Manage Recipe</a>
+        <li class="dropdown" *ngIf="isAuthenticated" routerLinkActive="active" appDropdown>
+          <a class="dropdown-toggle" role="button" >Manage Recipe</a>
           <ul class="dropdown-menu">
-            <li><a routerLink="/create">New Recipe</a></li>
-            <li><a href="#">Manage Recipe</a></li>
+            <li><a routerLink="/create" (click)="reset()">New Recipe</a></li>
+            <li><a (click)="onManage()" routerLink="/manage">Manage Recipe</a></li>
           </ul>
         </li>
         <li *ngIf="!isAuthenticated">
-          <a routerLink="/login">Login</a>
+          <a routerLink="/login" (click)="reset()">Login</a>
         </li>
         <li *ngIf="!isAuthenticated">
-          <a routerLink="/signup">Register</a>
+          <a routerLink="/signup" (click)="reset()">Register</a>
         </li>
         <li class="logout" *ngIf="isAuthenticated">
           <button type="button" class="btn btn-link" (click)="onLogout()">Logout</button>
         </li>
       </ul>
-      <form class="form-inline" id="search">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>

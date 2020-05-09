@@ -5,13 +5,14 @@ import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 import { PageEvent } from '@angular/material/paginator';
 import {AuthService} from '../../auth/auth.service';
+import {HeaderService} from '../../header/header.service';
 
 @Component({
   selector: 'app-recipes-list',
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.scss']
 })
-export class RecipeListComponent implements OnInit, OnDestroy{
+export class RecipeListComponent implements OnInit, OnDestroy {
   recipes: Recipe[] = [];
   totalRecipes = 0;
   recipesPerPage = 2;
@@ -19,14 +20,22 @@ export class RecipeListComponent implements OnInit, OnDestroy{
   pageSizeOptions = [1, 2, 4, 6, 8];
   subscription: Subscription;
   private authStatusSub: Subscription;
+  private filterSub: Subscription;
   isAuthenticated = false;
   userId: string;
+  username: string;
+  visible = false;
+  searchValue;
+  filterData: Recipe[];
 
-  constructor(private recipeService: RecipeService, private authService: AuthService) { }
+  constructor(private recipeService: RecipeService,
+              private authService: AuthService,
+              private headerService: HeaderService) {}
 
   ngOnInit() {
     this.recipeService.getRecipes(this.recipesPerPage, this.currentPage);
     this.userId = this.authService.getUserId();
+    this.username = this.authService.getUsername();
     this.subscription = this.recipeService.getRecipeChangeListener()
       .subscribe((recipeData: { recipes: Recipe[], recipeCount: number}) => {
         this.recipes = recipeData.recipes;
@@ -37,6 +46,12 @@ export class RecipeListComponent implements OnInit, OnDestroy{
       .subscribe(authenticated => {
         this.isAuthenticated = authenticated;
         this.userId = this.authService.getUserId();
+        this.username = this.authService.getUsername();
+      });
+    this.visible = this.headerService.getFilterStatus();
+    this.filterSub = this.headerService.getFilterStatusListener()
+      .subscribe(filtered => {
+        this.visible = filtered;
       });
   }
 
@@ -51,6 +66,32 @@ export class RecipeListComponent implements OnInit, OnDestroy{
       .subscribe(() => {
         this.recipeService.getRecipes(this.recipesPerPage, this.currentPage);
       });
+  }
+
+  search(term: string) {
+    if (!term) {
+      this.filterData = this.recipes;
+      console.log(this.filterData);
+    } else {
+      this.filterData = this.recipes.filter(x =>
+        x.title.trim().toLowerCase().includes(term.trim().toLowerCase())
+      );
+      console.log(this.filterData);
+    }
+  }
+
+  // onShow(e) {
+  //   if (e === false) {
+  //     this.visible = false;
+  //   } else if (e === true) {
+  //     this.visible = true;
+  //     console.log(this.visible);
+  //   }
+  // }
+
+
+  filter() {
+    return this.recipes.filter(response => response.user === this.userId);
   }
 
   ngOnDestroy(): void {

@@ -7,6 +7,7 @@ const userSchema = mongoose.Schema({
   username: { type: String, required: true},
   firstname: { type: String},
   lastname: { type: String}
+  // recipes: []
   }
 );
 

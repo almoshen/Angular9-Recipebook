@@ -1,1 +1,66 @@
-<p>grocery-list works!</p>
+<div class="row">
+  <div *ngIf="!isAuthenticated">Please log in first</div>
+  <div *ngIf="isAuthenticated" class="col-xs-10">
+    <app-grocery-edit></app-grocery-edit>
+    <hr>
+    <ul class="list-group">
+      <a
+        class="list-group-item"
+        style="cursor: pointer"
+        *ngFor="let ingredient of ingredients; let i = index"
+        (click)="onEditItem(i)"
+      >
+        {{ ingredient.name }} ({{ ingredient.amount }})
+      </a>
+    </ul>
+<!--    <button *ngIf="!mode" (click)="onSaveList()">Save New List</button>-->
+  </div>
+</div>
+<!--<div class="main-div">-->
+<!--  <mat-card>-->
+<!--    <form [formGroup]="listForm" (submit)="onAddList()">-->
+<!--      <div formArrayName="ingredients" *ngFor="let ingredientCtrl of ingredients; let i = index">-->
+<!--        <ng-container [formGroupName]="i">-->
+<!--          <mat-form-field>-->
+<!--            <div class="col-xs-8">-->
+<!--              <label for="name">Ingredient</label>-->
+<!--              <input-->
+<!--                matInput-->
+<!--                id="name"-->
+<!--                type="text"-->
+<!--                class="form-control"-->
+<!--                placeholder="ingredient name"-->
+<!--                formControlName="name">-->
+<!--            </div>-->
+<!--            <div class="col-xs-3">-->
+<!--              <input-->
+<!--                matInput-->
+<!--                type="number"-->
+<!--                min="0"-->
+<!--                aria-label="amount"-->
+<!--                aria-describedby="addAmount"-->
+<!--                class="form-control"-->
+<!--                placeholder="amount"-->
+<!--                onfocus="this.type='number';"-->
+<!--                formControlName="amount">-->
+<!--            </div>-->
+<!--            <div class="col-xs-1">-->
+<!--              <button-->
+<!--                type="button"-->
+<!--                class="btn btn-danger"-->
+<!--                (click)="onDeleteIngredient(i)">X</button>-->
+<!--            </div>-->
+<!--            <mat-error *ngIf="listForm.get('ingredients').invalid">Please enter the ingredients</mat-error>-->
+<!--          </mat-form-field>-->
+<!--        </ng-container>-->
+<!--      </div>-->
+<!--      <div class="btn-group" role="group" aria-label="Button group">-->
+<!--        <button mat-raised-button type="button" (click)="onAddIngredients()">Add Ingredient</button>-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <button mat-raised-button type="submit">Save List</button>-->
+<!--        <a mat-raised-button routerLink="">Cancel</a>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </mat-card>-->
+<!--</div>-->

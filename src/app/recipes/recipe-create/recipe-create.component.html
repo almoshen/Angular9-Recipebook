@@ -15,16 +15,53 @@
                  placeholder="Instruction"></textarea>
         <mat-error *ngIf="form.get('instructions').invalid">Please enter the instructions</mat-error>
       </mat-form-field>
-      <div>
-        <button mat-icon-button type="button" (click)="picker.click()">Pick Image</button>
-        <input type="file" #picker (change)="onPicked($event)">
+      <div formArrayName="ingredients" *ngFor="let ingredientCtrl of controls; let i = index">
+        <ng-container [formGroupName]="i">
+          <mat-form-field>
+            <div class="col-xs-8">
+              <input
+                matInput
+                type="text"
+                aria-label="ingredient"
+                aria-describedby="addIngredient"
+                class="form-control"
+                placeholder="ingredient name"
+                formControlName="name">
+            </div>
+            <div class="col-xs-3">
+              <input
+                matInput
+                type="number"
+                min="0"
+                aria-label="amount"
+                aria-describedby="addAmount"
+                class="form-control"
+                placeholder="amount"
+                onfocus="this.type='number';"
+                formControlName="amount">
+            </div>
+            <div class="col-xs-1">
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="onDeleteIngredient(i)">X</button>
+            </div>
+            <mat-error *ngIf="form.get('ingredients').invalid">Please enter the ingredients</mat-error>
+          </mat-form-field>
+        </ng-container>
+      </div>
+      <div class="btn-group" role="group" aria-label="Button group">
+        <button mat-raised-button type="button" (click)="onAddIngredient()">Add Ingredient</button>
+        <button mat-raised-button type="button" (click)="picker.click()">Pick Image</button>
+        <input aria-label="imagePath" aria-describedby="addImage" id="imagePath" type="file" #picker (change)="onPicked($event)">
       </div>
       <div class="image-preview" *ngIf="imagePreview !=='' && imagePreview">
         <img [src]="imagePreview" [alt]="form.value.title">
       </div>
+      <div>
       <button mat-raised-button type="submit">Save Recipe</button>
+      <a mat-raised-button routerLink="">Cancel</a>
+    </div>
     </form>
   </mat-card>
 </div>
-
-

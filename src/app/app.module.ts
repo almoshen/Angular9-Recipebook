@@ -18,8 +18,10 @@ import { MatButtonModule } from '@angular/material/button';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { LoginComponent } from './auth/login/login.component';
-import {SignupComponent} from './auth/signup/signup.component';
+import { SignupComponent } from './auth/signup/signup.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
+import { GroceryEditComponent } from './grocery-list/grocery-edit/grocery-edit.component';
+import {FilterPipe} from './shared/filter.pipe';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
     RecipeDetailComponent,
     DropdownDirective,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    GroceryEditComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

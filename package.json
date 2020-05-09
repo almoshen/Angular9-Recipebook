@@ -10,12 +10,12 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "node backend/server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start:server": "nodemon server.js"
+    "start:server": "nodemon backend/server.js"
   },
   "private": true,
   "dependencies": {
@@ -44,7 +44,8 @@
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2",
-    "typescript": "~3.7.5"
+    "typescript": "~3.7.5",
+    "mongodb": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.3",
